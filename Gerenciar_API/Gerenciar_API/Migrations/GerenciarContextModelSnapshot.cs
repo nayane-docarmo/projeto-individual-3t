@@ -32,6 +32,7 @@ namespace Gerenciar_API.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Marca")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NPatrimonio")
@@ -41,6 +42,7 @@ namespace Gerenciar_API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Tipo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -61,6 +63,7 @@ namespace Gerenciar_API.Migrations
                         .HasColumnType("real");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -105,15 +108,21 @@ namespace Gerenciar_API.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CPF")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Senha")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Setor")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

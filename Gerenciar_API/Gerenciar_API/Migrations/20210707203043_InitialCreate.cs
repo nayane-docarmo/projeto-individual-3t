@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Gerenciar_API.Migrations
 {
-    public partial class InitialCreat : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,10 +12,10 @@ namespace Gerenciar_API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NSerie = table.Column<int>(type: "int", nullable: false),
                     NPatrimonio = table.Column<int>(type: "int", nullable: false),
-                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Disponivel = table.Column<bool>(type: "bit", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -30,7 +30,7 @@ namespace Gerenciar_API.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Andar = table.Column<int>(type: "int", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Metragem = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
@@ -43,10 +43,10 @@ namespace Gerenciar_API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CPF = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Setor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CPF = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
+                    Setor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {

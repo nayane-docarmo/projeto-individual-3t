@@ -19,3 +19,7 @@ namespace API_Gerenciar.Context
         }
     }
 }
+//criado os dominios se cria o contexto para criar as tabelas 
+//console gerenciador de pacotes--
+//comando para criar as tabelas/migrations : Add-Migration InitialCreate 
+//comando para criar o database (ex Gerenciar) : update-database
