@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Gerenciar_API.Interfaces
 {
-    public interface IUsuario
+    interface ISala_Equipamento
     {
-        List<Usuario> Listar();
-        Usuario BuscarPorId(Guid id);
-        void Cadastrar(Usuario e);
-        void Alterar(Usuario e);
+        List<Sala_Equipamento> Listar();
+        Sala_Equipamento BuscarPorId(Guid id);
+        void Cadastrar(Sala_Equipamento e);
+        void Alterar(Sala_Equipamento e);
         void Excluir(Guid id);
     }
 }

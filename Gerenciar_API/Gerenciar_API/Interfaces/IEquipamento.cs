@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Gerenciar_API.Interfaces
 {
-    interface IEquipamento
+    public interface IEquipamento
     {
-        Equipamento Cadastrar(Equipamento e);
-        List<Equipamento> LerTodos();
+        List<Equipamento> Listar();
         Equipamento BuscarPorId(Guid id);
-        Equipamento Alterar(Equipamento e);
+        List<Equipamento> BuscarPorTipo(string tipo);
+        void Cadastrar(Equipamento e);
+        void Alterar(Equipamento e);
         void Excluir(Guid id);
     }
 }

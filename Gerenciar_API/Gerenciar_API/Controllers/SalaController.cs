@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gerenciar_API.Domains;
+using Gerenciar_API.Interfaces;
+using Gerenciar_API.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +15,53 @@ namespace Gerenciar_API.Controllers
     [ApiController]
     public class SalaController : ControllerBase
     {
-        // GET: api/<SalaController>
+        private readonly ISala _salaRepository;
+        public SalaController()
+        {
+            _salaRepository = new SalaRepository();
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Sala> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _salaRepository.Listar();
+        }
+        // GET api/<EquipamentoController>/5
+        [HttpGet("{Nome}")]
+        public void Get(string nome)
+        {
+            _salaRepository.BuscarPorNome(nome);
+            //TODO: ARRUMAR BUSCAR POR TIPO
         }
 
-        // GET api/<SalaController>/5
+        // GET api/<EquipamentoController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Sala Get(Guid id)
         {
-            return "value";
+            return _salaRepository.BuscarPorId(id);
+            //TODO: ARRUMAR BUSCAR POR ID 
         }
 
-        // POST api/<SalaController>
+        // POST api/<EquipamentoController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Sala sala)
         {
+            _salaRepository.Cadastrar(sala);
         }
 
-        // PUT api/<SalaController>/5
+         // PUT api/<EquipamentoController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Guid id, Sala sala)
         {
+            sala.Id = id;
+            _salaRepository.Alterar(sala);
         }
 
-        // DELETE api/<SalaController>/5
+
+        // DELETE api/<EquipamentoController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            _salaRepository.Excluir(id);
         }
     }
 }

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Gerenciar_API.Interfaces
 {
-    interface ISala
+    public interface ISala
     {
-        Sala Cadastrar(Sala s);
-        List<Sala> LerTodos();
+        List<Sala> Listar();
+        List<Sala> BuscarPorNome(string nome);
         Sala BuscarPorId(Guid id);
-        Sala Alterar(Sala s);
+        void Cadastrar(Sala e);
+        void Alterar(Sala e);
         void Excluir(Guid id);
     }
 }

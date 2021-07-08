@@ -21,7 +21,7 @@ namespace Gerenciar_API.Domains
 
         [Required]
         [Display(Name = "Data de Entrada")]
-        [DisplayFormat(DataFormatString = "mm/dd/yyyy")]
+       [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DataEntrada { get; set; }
 
         [Required]

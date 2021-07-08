@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gerenciar_API.Domains;
+using Gerenciar_API.Interfaces;
+using Gerenciar_API.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +15,46 @@ namespace Gerenciar_API.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        // GET: api/<UsuarioController>
+
+        private readonly IUsuario _usuarioRepository;
+        public UsuarioController()
+        {
+            _usuarioRepository = new UsuarioRepository();
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Usuario> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _usuarioRepository.Listar();
         }
 
-        // GET api/<UsuarioController>/5
+        // GET api/<EquipamentoController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Usuario Get(Guid id)
         {
-            return "value";
+            return _usuarioRepository.BuscarPorId(id);
+            //TODO: ARRUMAR BUSCAR POR ID 
         }
 
-        // POST api/<UsuarioController>
+        // POST api/<EquipamentoController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Usuario usuario)
         {
+            _usuarioRepository.Cadastrar(usuario);
         }
 
-        // PUT api/<UsuarioController>/5
+        // PUT api/<EquipamentoController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Guid id, Usuario usuario)
         {
-        }
+            usuario.Id = id;
+            _usuarioRepository.Alterar(usuario);
+        }   
 
-        // DELETE api/<UsuarioController>/5
+        // DELETE api/<EquipamentoController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            _usuarioRepository.Excluir(id);
         }
     }
 }

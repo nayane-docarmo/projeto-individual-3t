@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gerenciar_API.Domains
 {
-    public class BaseDomain
+    public abstract class BaseDomain
     {
         [Key]
         public Guid Id { get; set; }
